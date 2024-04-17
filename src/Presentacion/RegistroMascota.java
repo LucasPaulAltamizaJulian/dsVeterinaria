@@ -180,7 +180,7 @@ public class RegistroMascota extends javax.swing.JInternalFrame {
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
         DueniosPjo duenio=new DueniosPjo();
-        if(duenio.buscarDuenioPorDni(txtDniduenio.getText())&&validarCamposVacios()&&validarNumeros(txtEdad)&&validarNumeros(txtDniduenio)){
+        if(validarLetras(txtNombre)&&duenio.buscarDuenioPorDni(txtDniduenio.getText())&&validarCamposVacios()&&validarNumeros(txtEdad)&&validarNumeros(txtDniduenio)){
             Mascotas mascota=new Mascotas(txtDniduenio.getText(), txtNombre.getText(), txtEdad.getText(), txtCondicion.getText());
         Escrituratxt escribir=new Escrituratxt();
         escribir.registrarMascota(mascota);
@@ -247,6 +247,18 @@ public class RegistroMascota extends javax.swing.JInternalFrame {
         return false; // El texto contiene caracteres que no son números
     }
 }
+    private boolean validarLetras(JTextField textField) {
+    String texto = textField.getText().trim(); // Obtener el texto del JTextField y eliminar espacios en blanco
+    
+    // Verificar si el texto contiene solo letras
+    if (texto.matches("[a-zA-Z]+")) { // El patrón "[a-zA-Z]+" verifica que el texto contenga solo letras
+        return true; // El texto contiene solo letras
+    } else {
+        return false; // El texto contiene caracteres que no son letras
+    }
+}
+
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

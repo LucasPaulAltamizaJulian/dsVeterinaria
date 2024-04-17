@@ -187,7 +187,7 @@ public class RegistroDuenio extends javax.swing.JInternalFrame {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        if(validarCamposVacios()&&validarNumeros(txtEdad)&&validarNumeros(txtCelular)&&validarNumeros(txtDni)){
+        if(validarLetras(txtNombre)&&validarCamposVacios()&&validarNumeros(txtEdad)&&validarNumeros(txtCelular)&&validarNumeros(txtDni)){
             Escrituratxt escribir=new Escrituratxt();
         Duenios duenio=new Duenios(txtNombre.getText(), txtCelular.getText(), txtEdad.getText(), txtDireccion.getText(), txtDni.getText());
         escribir.registrarDuenio(duenio);
@@ -204,6 +204,7 @@ public class RegistroDuenio extends javax.swing.JInternalFrame {
     if (texto.matches("\\d+")) { // El patrón "\\d+" verifica que el texto contenga solo dígitos
         return true; // El texto contiene solo números
     } else {
+        JOptionPane.showMessageDialog(this, "Verifique los campos ingresados.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
         return false; // El texto contiene caracteres que no son números
     }
 }
@@ -252,6 +253,17 @@ public class RegistroDuenio extends javax.swing.JInternalFrame {
     }
     
     return !camposVacios; // Retorna true si todos los campos están llenos, false si hay algún campo vacío
+}
+private boolean validarLetras(JTextField textField) {
+    String texto = textField.getText().trim(); // Obtener el texto del JTextField y eliminar espacios en blanco
+    
+    // Verificar si el texto contiene solo letras
+    if (texto.matches("[a-zA-Z]+")) { // El patrón "[a-zA-Z]+" verifica que el texto contenga solo letras
+        return true; // El texto contiene solo letras
+    } else {
+        JOptionPane.showMessageDialog(this, "Verique los datos ingresados.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+        return false; // El texto contiene caracteres que no son letras
+    }
 }
 
 
